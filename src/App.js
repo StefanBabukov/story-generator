@@ -1,25 +1,20 @@
-import logo from './logo.svg';
+import React from 'react';
 import './App.css';
-
+import StoryInputForm from './components/StoryInputForm';
+import ImageGeneration from './components/ImageGeneration';
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    // const handleStoryData = (data) => {
+    //     // For demonstration purposes, just setting the state. You'd typically send this to a server or to GPT.
+    //     setStoryData(data);
+    // };
+
+    return (
+        <div className="App">
+            <h1>Story Generator</h1>
+            <StoryInputForm/>
+            {/* <ImageGeneration/> */}
+        </div>
+    );
 }
 
 export default App;
