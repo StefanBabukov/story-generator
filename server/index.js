@@ -5,12 +5,11 @@ const cors = require("cors");
 const app = express();
 const createScript = require('./createScript');
 const generateImage = require('./generateImage')
-
+const createSound = require('./createSound');
 
 app.use(bodyParser.json());
 app.use(cors());
-app.get("/create", async (req, res) => {
-  console.log('GENERATE IMAGE REQ IS ', req)
+app.get("/create-image", async (req, res) => {
   const prompt = req.query.prompt;
 
   const imageURL = await generateImage(prompt);    
@@ -18,8 +17,14 @@ app.get("/create", async (req, res) => {
 });
 
 app.get('/create-script', async(req, res)=>{
-    const completion = await createScript();
+    const storyData = req.query.storyData;
+    const completion = await createScript(storyData);
     res.send(completion)
+})
+app.get('/create-sound', async(req, res)=>{
+  const{prompt, indx} = req.query;
+  const completion = await createSound(prompt, indx);
+  res.send(completion)
 })
 
 const port = 8080

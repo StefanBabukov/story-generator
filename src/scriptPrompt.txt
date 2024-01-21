@@ -1,10 +1,27 @@
-Based on the user's input of a story themed around a "magical dinosaur" in the genres of "comedy" and
-"horror" with a duration of "3 minutes", craft a short film script. You have to generate the characters and keep the consistency of the plot.
-1. Ensure the story has a beginning, middle, and end, with a consistent plot and a proper conclusion. 
-2. Use plot twists, bad turn of events, happy endings, bad endings, culmination and epilogue. Your possibilities of story telling are limitless. Use the best knowledge of story telling, following best known to construct the story.
-
-3. The script should describe each frame with its image specification where the current situation/scenery of the frame is comprehensively described, narration/voice lines.  
-4. Utilise all of your creativeness to fill in the gaps inside the the outlines and specifications mentioned of the video. 
-5. At the end of each answer keep outputting ‘continue_story_flag’ until the story is ended. When the story ends, 'output end_story_flag' This is because the full story mostly wont be in a single answer and is to be able to know when to tell you in a next prompt to continue the story. 
-6. Make sure you specify what the image looks like as detailed as possible, and if you are showing a specific thing like a person/place/object, describe how it looks like as best as possible so that it can be fed to imageAI. 
-7. Before you start the story, your first answer should be giving information about the characters in this story, such as age, gender, and a comprehensive description of how they look like.
+`Based on the user's input of a story themed around a "${theme}" in the genre of
+    ${genres}, craft a short film script. You have to generate the characters and keep the consistency of the plot.
+    1. Ensure the story has a beginning, middle, and end, with a consistent plot and a proper conclusion. 
+    2. Use plot twists, bad turn of events, happy endings, bad endings, culmination and epilogue. Your possibilities of story telling are limitless. Use the best knowledge of story telling, following best known to construct the story.
+    3. The script should describe each frame with its image specification where the current situation/scenery of the frame is comprehensively described, narration/voice lines.  
+    4. Utilise all of your creativeness to fill in the gaps inside the the outlines and specifications mentioned of the video. 
+    5. Use as many tokens as possible to write the story and make sure its interesting and concludes within the answer you provide
+    6. Make sure you specify what the image looks like as detailed as possible, and if you are showing a specific thing like a person/place/object, describe how it looks like as best as possible so that it can be fed to imageAI. 
+    7. Before the first scene you need to give information about the characters in this story, such as age, gender, and a comprehensive description of how they look like.
+    8. When you output the script and character information, do it in an order that can be processed in javascript as if it was an api call. Like an object which follows this form:
+    {charactersDescription:
+       {name1: <how they look like>
+       name2,name3 .....
+        }
+     frames:[
+        {
+            image: <image specification>
+            sound:{ type: <Narator/character name> content: <what is being said>
+        }
+        ]
+    }
+    Just output the json without anything else in your answer now
+    9. Every time in a scene a character or more are present, you should include their name/s in between hashes - #<name># if they are in for 
+    every situation that its not their name mentioned.
+    Example situation: "The trio/both of them/he/she went inside the building". Here the image AI generating this scene image wouldnt know
+    which character that is, so it needs to be specified.
+    `

@@ -1,30 +1,30 @@
-const axios = require('axios')
+const axios = require('axios');
+const { OpenAI } = require('openai');
+const fs = require('fs');
+const path = require('path');
 
-const generateImage = async(prompt) =>{
-    console.log('GENERATING IMAGE FOR SCENE : ', prompt)
+const generateImage = async (prompt) => {
+    console.log('GENERATING IMAGE FOR SCENE:', prompt);
     const { OPENAI_API_KEY } = process.env;
-    try {
-        const response = await axios.post(
-          'https://api.openai.com/v1/images/generations',
-          {
-            prompt: prompt,
-            n: 1,                                //define the number of images
-            size: '512x512',                     //define the resolution of image
-          },
-          {
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${OPENAI_API_KEY}`,
-            },
-          }
-        );
-    
-        console.log('RESPONSE IS ' ,response.data);
-        return(response.data.data[0].url);
+    const openai = new OpenAI({
+        api_key: OPENAI_API_KEY,
+    });
 
-        // Handle the response here, e.g., extract image data and display or save it.
-      } catch (error) {
-        console.error('Error:', error.response.data);
-      }
- }
-    module.exports = generateImage
+    try {
+        const response = await openai.images.generate({
+            model: "dall-e-2",
+            prompt,
+            n: 1,
+            size: "1024x1024",
+        });
+
+        const imageURL = response.data[0].url;
+        console.log('IMAGE GENERATED', imageURL);
+
+        return imageURL;
+    } catch (error) {
+        console.error('Error:', error);
+    }
+};
+
+module.exports = generateImage;

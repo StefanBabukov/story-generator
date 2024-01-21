@@ -1,17 +1,18 @@
 import React, { useState } from 'react';
 import buildStoryScript from '../buildStoryScript';
 import generateImage from '../generateImage';
+import generateSound from '../generateSound';
 
 function StoryInputForm(props) {
     const [theme, setTheme] = useState('');
     const [genres, setGenres] = useState('');
-    const [duration, setDuration] = useState('');
-    const [characters, setCharacters] = useState('');
-    const [setting, setSetting] = useState('');
-    const [events, setEvents] = useState('');
+    // const [duration, setDuration] = useState('');
+    // const [characters, setCharacters] = useState('');
+    // const [setting, setSetting] = useState('');
+    // const [events, setEvents] = useState('');
 
     const handleSubmit = async(e) => {
-        e.preventDefault(); // This will prevent the default form submission behavior
+        e.preventDefault(); 
 
         // const storyData = {
         //     theme,
@@ -21,12 +22,12 @@ function StoryInputForm(props) {
         //     setting,
         //     events
         // };
-        const script =await buildStoryScript()
+        const script =await buildStoryScript({theme, genres})
 
-        const requests = []
+        const imageRequests = []
+        const soundRequests = []
         const storyCharacters = Object.keys(script.charactersDescription)
-        // script.frames.forEach((frame)=>{
-            const frame = script.frames[2]
+        script.frames.forEach((frame, indx)=>{
 
             const charactersInFrame = []
             storyCharacters.forEach((character)=>{
@@ -34,24 +35,23 @@ function StoryInputForm(props) {
                     charactersInFrame.push(character)
                 }
             })
-            let currentPrompt= '';
+            let currentImagePrompt= '';
             console.log('charactersInFrame.length', charactersInFrame.length)
             if (charactersInFrame.length){
                 const characterInfo = charactersInFrame.map((character)=> (`${character}: ${JSON.stringify(script.charactersDescription[character])}`))
-                // console.log(`Here is how the mentioned characters look: ${characterInfo}`)
-                currentPrompt += `Here is how the mentioned characters look: ##${characterInfo} ##`
+                currentImagePrompt += `Here is how the mentioned characters look: ##${characterInfo} ##`
             }
-            currentPrompt += `Generate an image based on this information:
+            currentImagePrompt += `Generate an image based on this information:
             ##${frame.image}##
             `
-            // console.log('CHARS IN FRAME ', charactersInFrame)
 
-            console.log('CURRENT PROMPT ', currentPrompt)
-            
-            requests.push(generateImage(currentPrompt))
-        // })
-        const images = await Promise.all(requests);
-        console.log('IMAGES ARE ', images)
+            console.log('CURRENT PROMPT ', frame.sound)
+            soundRequests.push(generateSound(frame.sound, indx))
+            // imageRequests.push(generateImage(currentImagePrompt, indx))
+        })
+        const images = await Promise.all(imageRequests);
+        const sounds = await Promise.all(soundRequests);
+        console.log('SOUNDS ARE ', sounds);
     };
 
     return (
