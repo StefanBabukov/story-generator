@@ -12,61 +12,50 @@ const mockResponse = ()=>(
                 "message": {
                     "role": "assistant",
                     "content": {
-                        "charactersDescription": {
-                          "Barney": {
-                            "age": 25000000,
-                            "gender": "Male",
-                            "looks": "Barney is a benevolent but clumsy T-rex. He is majestic yet oddly charming with vibrant purple scales and a playful squeaky voice. He wears a bowtie that's imbued with magic, glowing a warm golden hue."
-                          },
-                          "Jilly": {
-                            "age": 10,
-                            "gender": "Female",
-                            "looks": "Jilly is a fearless lass with curly, flaming red hair, freckles, and sparkling emerald eyes that are always filled with mischief. She often wears a yellow dress with an oversized hat."
-                          },
-                          "GhostRaptors": {
-                            "age": 'Unknown',
-                            "gender": "Unknown",
-                            "looks": "GhostRaptors are spectral dinosaurs with an eerie green glow, sharp claws, terrifying teeth, and blood-chilling screeches."
-                          }
+                      "title": "Bloody Laughter",
+                      "style": "Cartoonish human characters in a 90s sitcom style",
+                      "charactersDescription": {
+                        "Drake": {"description": "Drake, a 200-year-old vampire with a youthful look, pale skin, dark hair, and red eyes; he is a funny, clumsy guy who struggles to adapt to modern life", "voiceType": "Onyx"},
+                        "Rita": {"description": "Rita, a 28-year-old lady, short blonde hair, glasses, and somewhat quirky. She accidentally learns Drake's secret", "voiceType": "Nova"},
+                        "Bob": {"description": "Bob, an overenthusiastic vampire hunter who is bad at his job, in his 40s, large and clumsy", "voiceType": "Alloy"}
+                      },
+                    
+                      "frames": [
+                        {
+                          "image": "A neat modern apartment. Drake is sitting on a sofa, watching a 'how-to-use smartphone' tutorial on TV",
+                          "sound": { "type": "Drake", "content": "Ugh, I miss the good old days. Why can’t I just send a raven?" }
                         },
-                        "frames": [
-                          {
-                            "image": "Open on a normal suburbia and slowly pan to a seemingly ordinary house with a sign saying 'Beware of Dinosaur' next to a small wooden treehouse.",
-                            "sound": { "type": "Narrator", "content": "Once upon a time, in a small town of Whitshire, lived a quirky family with an even quirkier pet dinosaur..." }
-                          },
-                          {
-                            "image": "The treehouse door creaks open, revealing Barney, the charmingly massive purple T-Rex, as he ducks to get out.",
-                            "sound": { "type": "Barney", "content": "Oh, not again! I really need to remember to duck." }
-                          },
-                          {
-                            "image": "Jilly is doing her homework at the kitchen table, trying not to laugh at Barney's clumsiness.",
-                            "sound": { "type": "Jilly", "content": "You are 40 feet tall, Barney, how can you forget ducking every time?" }
-                          },
-                          {
-                            "image": "At night, GhostRaptors swarm out of an enchanted forest and creep into town, spreading an eerie fog.",
-                            "sound": { "type": "Narrator", "content": "However, one mysterious night, menacing GhostRaptors from the enchanted forest slink into the town, bringing a sense of dread..." }
-                          },
-                          {
-                            "image": "Barney, with a determined look, stands guard by the house, the golden glow of his bowtie intensified.",
-                            "sound": { "type": "Barney", "content": "Stay inside, Jilly! I'll protect us!" }
-                          },
-                          {
-                            "image": "Barney, using his magic bowtie, fights off the GhostRaptors with a brilliant display of colorful enchantments.",
-                            "sound": { "type": "Narrator", "content": "Fear transformed into laughter as Barney slipped and slid, his clumsy fight against the GhostRaptors turning into a comical spectacle." }
-                          },
-                          {
-                            "image": "The sun rises, the GhostRaptors vanish, and Barney, although tired, stands triumphantly.",
-                            "sound": { "type": "Jilly", "content": "Bravo Barney! You are the bravest dinosaur ever!" }
-                          },
-                          {
-                            "image": "The sleepy town of Whitshire now celebrates 'Barney the Brave Day', and life returns to its goofy norm.",
-                            "sound": {
-                              "type": "Narrator",
-                              "content": "From that day forward, the quaint town had a new legend - 'Barney, the clumsy, magical T-Rex'. And life? Well, it was anything but ordinary!"
-                            }
-                          }
-                        ]
-                      }
+                        {
+                          "image": "Rita walks through the door",
+                          "sound": { "type": "Rita", "content": "Drake, I need your... Oh, are you still trying to figure out how to use a smartphone?" }
+                        },
+                        {
+                          "image": "Rita laughing, Drake looking embarrassed",
+                          "sound": { "type": "Drake", "content": "Yeah, terrible at it. I miss letters, so much more.. personal" }
+                        },
+                        {
+                          "image": "Suddenly, the door breaks and Bob enters, wearing a garlic necklace",
+                          "sound": { "type": "Bob", "content": "Beware, creature of the night! Your time has come!" }
+                        },
+                        {
+                          "image": "Drake gets scared, hides behind Rita. Bob trying to look intimidating",
+                          "sound": { "type": "Rita", "content": "Bob, get out! This is not halloween!" }
+                        },
+                        {
+                          "image": "Bob slipping on a rug, falling down. Drake and Rita laughing",
+                          "sound": { "type": "Drake", "content": "I think my biggest threat is diabetes from all the popcorn I eat watching this comedy" }
+                        },
+                        {
+                          "image": "Bob getting up, dusting off, looking embarrassed, Drake and Rita still laughing",
+                          "sound": { "type": "Bob", "content": "I'll get you next time, vampire!" }
+                        },
+                        {
+                          "image": "Bob exits through the broken door. Drake and Rita, looking after him, still laughing",
+                          "sound": { "type": "Narrator", "content": "And so the day ends, not with a menace, but with hearty laughter. After all, it's all part of being the good amongst the night's creatures." }
+                        }
+                      ]
+                    
+                    }   
                 },
                 "finish_reason": "stop"
             }

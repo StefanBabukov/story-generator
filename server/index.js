@@ -10,9 +10,9 @@ const createSound = require('./createSound');
 app.use(bodyParser.json());
 app.use(cors());
 app.get("/create-image", async (req, res) => {
-  const prompt = req.query.prompt;
+  const {prompt, pathToSave} = req.query;
 
-  const imageURL = await generateImage(prompt);    
+  const imageURL = await generateImage(prompt, pathToSave);    
   res.send(imageURL)
 });
 
@@ -22,8 +22,8 @@ app.get('/create-script', async(req, res)=>{
     res.send(completion)
 })
 app.get('/create-sound', async(req, res)=>{
-  const{prompt, indx} = req.query;
-  const completion = await createSound(prompt, indx);
+  const{prompt, pathToSave, voiceType} = req.query;
+  const completion = await createSound(prompt, pathToSave, voiceType);
   res.send(completion)
 })
 

@@ -2,24 +2,22 @@
     const fs = require('fs');
     const path = require('path');
 
-    const createSound = async (prompt, indx) => {
+    const createSound = async (prompt, pathToSave, voiceType) => {
         const openai = new OpenAI();
 
         try {
-            console.log('CREATING SOUND WITH PROMPT ', prompt , ' ## for scene ', indx);
+            console.log('CREATING SOUND WITH PROMPT ', prompt , pathToSave);
             const response = await openai.audio.speech.create({
                 model: "tts-1",
-                voice: "alloy",
+                voice: voiceType,
                 input: prompt.content,
             });
-            // Create the file path
-            const speechFile = path.join(__dirname, '..', 'story', `frame-${indx}.mp3`);
 
             // Write the audio data to a file
             const buffer = Buffer.from(await response.arrayBuffer());
-            await fs.promises.writeFile(speechFile, buffer);
+            await fs.promises.writeFile(pathToSave, buffer);
 
-            console.log(`Audio file created at ${speechFile}`);
+            console.log(`Audio file created at ${pathToSave}`);
         } catch (error) {
             console.error('Error creating audio file:', error);
         }

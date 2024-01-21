@@ -1,26 +1,50 @@
 import React, { useState, useEffect } from 'react';
+const Slideshow = ({ startIndex = 0, endIndex, duration = 10000 }) => {
+    const [currentIndex, setCurrentIndex] = useState(startIndex);
+    const [hasMoreSlides, setHasMoreSlides] = useState(true);
 
-const SlideShow = ({ media, duration = 10000 }) => {
-    const [currentIndex, setCurrentIndex] = useState(0);
+    // useEffect(() => {
+    //     if (currentIndex > endIndex) {
+    //         setHasMoreSlides(false);
+    //         return;
+    //     }
 
-    useEffect(() => {
-        const timer = setTimeout(() => {
-            setCurrentIndex((currentIndex + 1) % media.length);
-        }, duration);
+    //     const timer = setTimeout(() => {
+    //         setCurrentIndex(currentIndex + 1);
+    //     }, duration);
 
-        return () => clearTimeout(timer);
-    }, [currentIndex, media.length, duration]);
+    //     return () => clearTimeout(timer);
+    // }, [currentIndex, endIndex, duration]);
 
-    const currentMedia = media[currentIndex];
+    const goToNextSlide = () => {
+        setCurrentIndex(currentIndex+1)
+    };
+
+    const goToPreviousSlide = () => {
+        if (currentIndex > startIndex) {
+            setCurrentIndex(currentIndex - 1);
+        }
+    };
+
+    const imagePath = `/story/image-${currentIndex}.png`;
+    const audioPath = `/story/frame-${currentIndex}.mp3`;
 
     return (
         <div>
-            <img src={currentMedia.image} alt={`Slide ${currentIndex}`} />
-            <audio src={currentMedia.audio} autoPlay>
+            <img src={imagePath} alt={`Slide ${currentIndex}`} />
+            <audio src={audioPath} autoPlay>
                 Your browser does not support the audio element.
             </audio>
+            <div>
+                <button onClick={goToPreviousSlide} disabled={currentIndex === startIndex}>
+                    Previous
+                </button>
+                <button onClick={goToNextSlide}>
+                    Next
+                </button>
+            </div>
         </div>
     );
 };
 
-export default SlideShow;
+export default Slideshow;
