@@ -12,49 +12,94 @@ const mockResponse = ()=>(
                 "message": {
                     "role": "assistant",
                     "content": {
-                      "title": "Bloody Laughter",
-                      "style": "Cartoonish human characters in a 90s sitcom style",
+                      "title": "The Fourth Dimension Dwellers",
+                      "style": "futuristic_spacescape",
                       "charactersDescription": {
-                        "Drake": {"description": "Drake, a 200-year-old vampire with a youthful look, pale skin, dark hair, and red eyes; he is a funny, clumsy guy who struggles to adapt to modern life", "voiceType": "Onyx"},
-                        "Rita": {"description": "Rita, a 28-year-old lady, short blonde hair, glasses, and somewhat quirky. She accidentally learns Drake's secret", "voiceType": "Nova"},
-                        "Bob": {"description": "Bob, an overenthusiastic vampire hunter who is bad at his job, in his 40s, large and clumsy", "voiceType": "Alloy"}
+                        "#Alice#": {
+                          "description": "28-year-old female, long silver hair, sky-blue eyes, wears a glowing necklace.",
+                          "voiceType": "nova"
+                        },
+                        "#Bob#": {
+                          "description": "30-year-old male, short black hair, brown eyes, wears a suit made of light.",
+                          "voiceType": "onyx"
+                        },
+                        "#Zorxal#": {
+                          "description": "ageless 4th-dimensional entity, shape constantly morphing, blindingly radiant.",
+                          "voiceType": "alloy"
+                        }
                       },
-                    
                       "frames": [
                         {
-                          "image": "A neat modern apartment. Drake is sitting on a sofa, watching a 'how-to-use smartphone' tutorial on TV",
-                          "sound": { "type": "Drake", "content": "Ugh, I miss the good old days. Why can’t I just send a raven?" }
+                          "image": "Alice and Bob in a futuristic spaceship cockpit. Both look stunned as they stare at a distant glowing entity in the cosmos.",
+                          "sound": {
+                            "type": "alia",
+                            "content": "Alice to Bob, 'Is... is that...?'"
+                          }
                         },
                         {
-                          "image": "Rita walks through the door",
-                          "sound": { "type": "Rita", "content": "Drake, I need your... Oh, are you still trying to figure out how to use a smartphone?" }
+                          "image": "Bob, looking at a complex 4D map console, pales and nods at Alice.",
+                          "sound": {
+                            "type": "bob",
+                            "content": "Bob to Alice, 'Yes.. it's a fourth-dimensional entity, Zorxal.'"
+                          }
                         },
                         {
-                          "image": "Rita laughing, Drake looking embarrassed",
-                          "sound": { "type": "Drake", "content": "Yeah, terrible at it. I miss letters, so much more.. personal" }
+                          "image": "Alice takes a deep breath, reaches for the spaceship controls and initiates contact.",
+                          "sound": {
+                            "type": "alice",
+                            "content": "'This is Alice of the human spaceship Andromeda, we come in peace.'"
+                          }
                         },
                         {
-                          "image": "Suddenly, the door breaks and Bob enters, wearing a garlic necklace",
-                          "sound": { "type": "Bob", "content": "Beware, creature of the night! Your time has come!" }
+                          "image": "Zorxal's form morphs dramatically, crackling with energies as a voice resonates from the entity.",
+                          "sound": {
+                            "type": "zorxal",
+                            "content": "'Welcome, Alice of Andromeda. I am Zorxal. What do you seek?'"
+                          }
                         },
                         {
-                          "image": "Drake gets scared, hides behind Rita. Bob trying to look intimidating",
-                          "sound": { "type": "Rita", "content": "Bob, get out! This is not halloween!" }
+                          "image": "Alice and Bob exchange nervous glances, then Alice addresses Zorxal, asking for knowledge of the fourth dimension.",
+                          "sound": {
+                            "type": "alice",
+                            "content": "'We wish to learn, Zorxal. Teach us about the fourth dimension.'"
+                          }
                         },
                         {
-                          "image": "Bob slipping on a rug, falling down. Drake and Rita laughing",
-                          "sound": { "type": "Drake", "content": "I think my biggest threat is diabetes from all the popcorn I eat watching this comedy" }
+                          "image": "Zorxal pulses brighter, forming a hologram-like 'window' into the fourth dimension. It is an abstract, mesmerizing scene, filled with shifting patterns and impossible shapes.",
+                          "sound": {
+                            "type": "zorxal",
+                            "content": "'Observe carefully!'"
+                          }
                         },
                         {
-                          "image": "Bob getting up, dusting off, looking embarrassed, Drake and Rita still laughing",
-                          "sound": { "type": "Bob", "content": "I'll get you next time, vampire!" }
+                          "image": "Alice and Bob gaze in awe at the 'window', as their minds open to the alien but fascinating concepts of fourth-dimensional reality.",
+                          "sound": {
+                            "type": "Narrator",
+                            "content": "They felt their minds expanding, transcending their 3D reality."
+                          }
                         },
                         {
-                          "image": "Bob exits through the broken door. Drake and Rita, looking after him, still laughing",
-                          "sound": { "type": "Narrator", "content": "And so the day ends, not with a menace, but with hearty laughter. After all, it's all part of being the good amongst the night's creatures." }
+                          "image": "Zorxal slowly retracts the 'window.' Alice and Bob, looking visibly changed, exchange a knowing smile.",
+                          "sound": {
+                            "type": "alice",
+                            "content": "'Thank you, Zorxal. You’ve shown us a whole new reality.'"
+                          }
+                        },
+                        {
+                          "image": "Zorxal's radiance dims. The entity emits a comforting, gentle wave of light, before gently floating away into the cosmic expanse.",
+                          "sound": {
+                            "type": "zorxal",
+                            "content": "'Farewell, young learners. Use this knowledge well.'"
+                          }
+                        },
+                        {
+                          "image": "Alice and Bob, changed forever, watch as Zorxal fades away. Their spaceship aimed at their home world.",
+                          "sound": {
+                            "type": "Narrator",
+                            "content": "Armed with newfound knowledge and potentials, they returned home, ready to bring a new dawn to human understanding."
+                          }
                         }
                       ]
-                    
                     }   
                 },
                 "finish_reason": "stop"

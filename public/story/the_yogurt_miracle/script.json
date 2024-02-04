@@ -1,0 +1,79 @@
+{
+  "title": "The Yogurt Miracle",
+  "style": "Animated, Pixar-like",
+  "charactersDescription": {
+    "George": {
+      "description": "A short, plump 50-year-old man with a cheery demeanor and unkempt, graying hair. He wears wire-rimmed glasses and a worn-out lab coat signaling his dedication to his job as a food scientist.",
+      "voiceType": "onyx"
+    },
+    "Lisa": {
+      "description": "28-year-old woman with a sharp facial features, long brown hair and a commanding presence. She is a savvy businesswoman, dressed in chic business attire.",
+      "voiceType": "nova"
+    }
+  },
+  "frames": [
+    {
+      "image": "George in a cluttered laboratory overflowing with dairy products and research material.",
+      "sound": {
+        "type": "George",
+        "content": "Not again! The formula doesn't seem to work!"
+      }
+    },
+    {
+      "image": "Lisa walking into George's laboratory, looking around curiously at the chaos, and raising an eyebrow at a bizarre yogurt experiment.",
+      "sound": {
+        "type": "Lisa",
+        "content": "Hello George, any luck in creating the revolutionary yogurt you've been raving about?"
+      }
+    },
+    {
+      "image": "George looking disappointed, showing Lisa a bowl of failed yogurt experiment.",
+      "sound": {
+        "type": "George",
+        "content": "Sadly, not yet Lisa. But I believe I am close."
+      }
+    },
+    {
+      "image": "Time-lapse montage of George and Lisa working together, analyzing samples, cleaning forgotten yogurt spills, and conducting further experiments.",
+      "sound": {
+        "type": "Narrator",
+        "content": "Days turn into weeks, weeks into months, but George and Lisa are relentless in their pursuit."
+      }
+    },
+    {
+      "image": "George looking exhausted, falling asleep on his lab desk. Lisa placing a blanket on him. The scene then focuses on a yogurt sample left accidentally under a microscope's light overnight.",
+      "sound": {
+        "type": "Narrator",
+        "content": "Unknowingly, they had set a stage for a peculiar accident, a chance mistake that would change everything."
+      }
+    },
+    {
+      "image": "The scene reveals a changed color yogurt sample under the microscope.",
+      "sound": {
+        "type": "Narrator",
+        "content": "The morning brings a bewitching discovery. The yogurt sample looked unlike anything they'd seen before."
+      }
+    },
+    {
+      "image": "George examining the sample with disbelief, while Lisa looks on anxiously.",
+      "sound": {
+        "type": "George",
+        "content": "This is...remarkable! The properties have altered. The formula...it worked!"
+      }
+    },
+    {
+      "image": "The scene shifts to a bustling factory with George and Lisa watching numerous containers of their revolutionary yogurt being produced.",
+      "sound": {
+        "type": "Narrator",
+        "content": "Their discovery marked the launch of a revolutionary yogurt, a product that changes the dairy industry forever."
+      }
+    },
+    {
+      "image": "Closing scene of George and Lisa sitting exhausted but happy in the now tidy laboratory, clinking their glasses filled with the new miraculous yogurt in celebration.",
+      "sound": {
+        "type": "Lisa",
+        "content": "To the world's tastiest accident!"
+      }
+    }
+  ]
+}

@@ -1,0 +1,52 @@
+/* Slideshow.css */
+.story-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+  }
+  
+  .story-button {
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin: 5px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+  
+  .story-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .story-container {
+    text-align: center;
+  }
+  
+
+  .slide-container {
+    text-align: center;
+}
+
+.image-container {
+    position: relative;
+    display: inline-block;
+}
+
+.image-container img {
+    width: 100%; /* Adjust based on your preference */
+    height: auto; /* Adjust based on your preference */
+}
+
+.subtitle {
+    position: absolute;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.5); /* Semi-transparent black background */
+    color: #fff; /* White text color */
+    width: 100%;
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+}

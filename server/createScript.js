@@ -8,7 +8,10 @@ const path = require('path');
 const openai = new OpenAI({
     api_key: OPENAI_API_KEY,
   })
-
+const runWithMock = ()=>{
+  const completion = mockResponse()
+  return completion;
+}
 const createScript = async(storyData) =>{
     const {     
         theme,
@@ -28,7 +31,8 @@ const createScript = async(storyData) =>{
      shimmer]
     - Generate the script in a structured JSON format for easy processing.
     - Use a full answer to write as much as you can and make sure the story concludes.
-    - Choose a title for the story and image style for the image ai generation
+    - Choose a title for the story and image style which has to define the overall characteristic of the comic. If its live-action, 
+    animated, what animation style and etc. for the image ai generation
     
     Characters and Scenes Format:
     {
@@ -59,11 +63,9 @@ const createScript = async(storyData) =>{
         messages: [{role: "user", content: prompt}],
         max_tokens: totalMaxTokens - promptTokenCount
       });
-    // const completion = mockResponse()
-
+    console.log('RESPONSE WAS ', completion)
     const scriptString = await completion.choices[0].message.content;
     const script = JSON.parse(scriptString);
-    console.log('SCRIPT ', script, script?.title)
     // Sanitize the title to create a valid directory name
     const sanitizedTitle = script?.title?.replace(/[^a-z0-9]/gi, '_').toLowerCase() || 'unknown-story';
     const storyDir = path.join(__dirname, '..', 'public', 'story', sanitizedTitle);
@@ -72,7 +74,9 @@ const createScript = async(storyData) =>{
     if (!fs.existsSync(storyDir)){
         fs.mkdirSync(storyDir, { recursive: true });
     }
-    
+    const scriptFilePath = path.join(storyDir, 'script.json');
+    fs.writeFileSync(scriptFilePath, JSON.stringify(script, null, 2), 'utf8');
+    console.log('Script created for ',sanitizedTitle)
     return {...script, folderTitle: sanitizedTitle }
 }
 

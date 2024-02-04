@@ -4,17 +4,24 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const app = express();
 const createScript = require('./createScript');
-const generateImage = require('./generateImage')
+const {generateImage, refactorPrompt} = require('./generateImageBackend')
 const createSound = require('./createSound');
+const getStories = require('./getStories');
 
 app.use(bodyParser.json());
 app.use(cors());
 app.get("/create-image", async (req, res) => {
   const {prompt, pathToSave} = req.query;
 
-  const imageURL = await generateImage(prompt, pathToSave);    
+  const promptRefactored = await refactorPrompt(prompt);
+  const imageURL = await generateImage(promptRefactored, pathToSave);    
   res.send(imageURL)
 });
+
+app.get('/stories', async (req,res)=>{
+  const files = await getStories();
+  res.json(files);
+})
 
 app.get('/create-script', async(req, res)=>{
     const storyData = req.query.storyData;
