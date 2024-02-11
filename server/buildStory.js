@@ -5,7 +5,7 @@ const { generateImage } = require('./generateImageBackend');
 const delay = (ms) => new Promise(resolve => setTimeout(resolve, ms));
 
 const RATE_LIMIT_DELAY_MS = 60000; // 60 seconds for a minute delay
-const MAX_REQUESTS_PER_MINUTE = 6;
+const MAX_REQUESTS_PER_MINUTE = 5;
 
 const buildStory = async (description, genres) => {
     try {
@@ -14,15 +14,6 @@ const buildStory = async (description, genres) => {
         const { style, folderTitle } = script;
         const storyPath = `../public/story/${folderTitle}`;
         const storyCharacters = Object.keys(script.charactersDescription);
-
-        // Process sound requests
-        script.frames.forEach((frame, indx) => {
-            const voiceType = script.charactersDescription[frame.sound.type]?.voiceType || 'nova';
-            soundRequests.push(createSound(frame.sound, `${storyPath}/frame-${indx}.mp3`, voiceType));
-        });
-
-        // // Wait for all sound requests to complete
-        await Promise.all(soundRequests);
 
         // Process image requests in batches
         let previousScenes = [];
@@ -61,6 +52,14 @@ const buildStory = async (description, genres) => {
                 await delay(RATE_LIMIT_DELAY_MS);
             }
         }
+        // Process sound requests
+        script.frames.forEach((frame, indx) => {
+            const voiceType = script.charactersDescription[frame.sound.type]?.voiceType || 'nova';
+            soundRequests.push(createSound(frame.sound, `${storyPath}/frame-${indx}.mp3`, voiceType));
+        });
+
+        // Wait for all sound requests to complete
+        await Promise.all(soundRequests);
         console.log('STORY GENERATED !')
         return 200;
     } catch (e) {

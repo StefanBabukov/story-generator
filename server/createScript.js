@@ -23,7 +23,6 @@ const createScript = async(description, genres) =>{
     - Incorporate elements like plot twists, climaxes, and various endings.
     - Describe each scene in detail, including visual elements and dialogue, suitable for image AI processing. You need to include
     context of the story in the image prompt to make sure that each image relates to each other.
-    - Include character names in hashes (e.g., #John#) in scenes for clarity.
     - Choose a voiceType for each character for the openai text to speech ai choose one of these values - [alloy, echo, fable, onyx, shimmer]
     - Generate the script in a structured JSON format for easy processing.
     - Use a full answer to write as much as you can and make sure the story concludes.
@@ -42,7 +41,7 @@ const createScript = async(description, genres) =>{
         "frames": [
           {
             "image": "<image specification>",
-            "sound": { "type": "<Narrator/Character>", "content": "<dialogue>" }
+            "sound": { "type": "<Narrator or a character name from the story>", "content": "<dialogue>" }
             // More frame details
           },
           // More frames
