@@ -12,45 +12,42 @@ const runWithMock = ()=>{
   const completion = mockResponse()
   return completion;
 }
-const createScript = async(storyData) =>{
-    const {     
-        theme,
-        genres,
-    } = storyData;
+const createScript = async(description, genres) =>{
 
-    console.log('BUILDING STORY')
 
-    const prompt = `Create a short film script based on a story themed around "${theme}" in the genre of "${genres}". Follow these guidelines:
+    console.log('Creating script for ', description, ' genres ', genres)
 
-    - Develop characters with clear backgrounds. Include age, gender, and physical descriptions.
+    const prompt = `Create a short film script based on a story descriptiond around "${description}" in the genre of "${genres}". Follow these guidelines:
+    Develop characters with clear backgrounds. Include age, gender, and physical descriptions.
     - Structure the story with a beginning, middle, and end. Ensure plot consistency and a proper conclusion.
     - Incorporate elements like plot twists, climaxes, and various endings.
-    - Describe each scene in detail, including visual elements and dialogue, suitable for image AI processing.
+    - Describe each scene in detail, including visual elements and dialogue, suitable for image AI processing. You need to include
+    context of the story in the image prompt to make sure that each image relates to each other.
     - Include character names in hashes (e.g., #John#) in scenes for clarity.
-    - Choose a voiceType for each character for the openai text to speech ai choose one of these values - [alloy, echo, fable, onyx, nova, 
-     shimmer]
+    - Choose a voiceType for each character for the openai text to speech ai choose one of these values - [alloy, echo, fable, onyx, shimmer]
     - Generate the script in a structured JSON format for easy processing.
     - Use a full answer to write as much as you can and make sure the story concludes.
     - Choose a title for the story and image style which has to define the overall characteristic of the comic. If its live-action, 
     animated, what animation style and etc. for the image ai generation
-    
-    Characters and Scenes Format:
-    {
-      title: <title>
-       style: <style>
-      charactersDescription: {
-        "name1": {description: "<description>", voiceType: <chosen voice type>},
-        // More characters
-      },
-      "frames": [
-        {
-          "image": "<image specification>",
-          "sound": { "type": "<Narrator/Character>", "content": "<dialogue>" }
-          // More frame details
+    - Try to include at least 8 scenes in the story
+    - Character description needs to be unique and descriptive enough so that the same character can be re created in different scenes.
+    - Your answer needs to be a valid parseable json in the format: 
+      {
+        "title": <title>,
+        "style": <style>,
+        "charactersDescription": {
+          "name1": {description: "<description>", "voiceType": "<chosen voice type>"},
+          // More characters
         },
-        // More frames
-      ]
-    }
+        "frames": [
+          {
+            "image": "<image specification>",
+            "sound": { "type": "<Narrator/Character>", "content": "<dialogue>" }
+            // More frame details
+          },
+          // More frames
+        ],
+      }
     `
 
   
@@ -63,8 +60,9 @@ const createScript = async(storyData) =>{
         messages: [{role: "user", content: prompt}],
         max_tokens: totalMaxTokens - promptTokenCount
       });
-    console.log('RESPONSE WAS ', completion)
-    const scriptString = await completion.choices[0].message.content;
+    const scriptString = completion.choices[0].message.content;
+    console.log('RESPONSE WAS ', completion.choices[0].message)
+
     const script = JSON.parse(scriptString);
     // Sanitize the title to create a valid directory name
     const sanitizedTitle = script?.title?.replace(/[^a-z0-9]/gi, '_').toLowerCase() || 'unknown-story';

@@ -36,9 +36,9 @@ const modifyPrompt = async (prompt, error)=>{
 const refactorPrompt = async (rawPrompt)=>{
     const correctionPrompt=`I'm trying to generate images for a story. Here is the raw story script so far:
     #${rawPrompt}#. Use the context about the previous scenes and character information to come up with a prompt which will be sent 
-    to dalle to generate an image for the last scene. The prompt should include enough information to depict exactly what the current scene 
+    to dalle to generate an image for the last scene. The prompt should include all information to depict exactly what the current scene 
     and its characters look like. Make sure the prompt you give me will be accepted by dalle.
-    Make sure you include every information such as the title, style, and etc. so that all of the different images have a consistent style 
+    Make sure you include every information such as the title, style, and all context. so that all of the different images have a consistent style. 
     `
     console.log('generating better image prompt')
     const completionModel = "gpt-3.5-turbo"; // Use the appropriate model version
@@ -62,14 +62,13 @@ const generateImage = async (prompt, pathToSave, attempt = 1, maxRetries = 3) =>
     console.log('GENERATING IMAGE FOR SCENE:', prompt);
     try {
         const response = await openai.images.generate({
-            model: "dall-e-2",
+            model: "dall-e-3",
             prompt,
             n: 1,
             size: "1024x1024",
         });
 
         const imageURL = response.data[0].url;
-        console.log('IMAGE GENERATED', imageURL);
 
         // Download and save the image
         const imageResponse = await axios({

@@ -7,9 +7,17 @@ const createScript = require('./createScript');
 const {generateImage, refactorPrompt} = require('./generateImageBackend')
 const createSound = require('./createSound');
 const getStories = require('./getStories');
-
+const buildStory = require('./buildStory');
 app.use(bodyParser.json());
 app.use(cors());
+
+app.get('/build-story', async(req, res)=>{
+  const {genres, description }= req.query;
+
+  const story = await buildStory(description, genres)
+  res.sendStatus(story)
+})
+
 app.get("/create-image", async (req, res) => {
   const {prompt, pathToSave} = req.query;
 

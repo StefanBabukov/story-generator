@@ -55,7 +55,7 @@ const Story = ({folder})=>{
         if (!response.ok) throw new Error('Network response was not ok');
         const script = await response.json();
         const sound = script.frames[currentIndex].sound;
-        setSubtitle(`${sound.name? `${sound.name}: `: ''} ${sound.content}`);
+        setSubtitle(`${sound.type && sound.type !== 'Narrator' ? `${sound.type}: `: ''} ${sound.content}`);
       } catch (error) {
         console.error("Failed to fetch story script:", error);
       }
